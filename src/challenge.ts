@@ -40,7 +40,19 @@ function addReview(
 ): ReviewedBook {
   // write your code here...
 
+  const newReview: Review = {
+    reviewer,
+    comment,
+  };
+
+  if (!book.reviews) {
+    book.reviews = [];
+  }
+
+  book.reviews.push(newReview);
+
   return book;
 }
+
 
 export { addReview, Review, ReviewedBook };

@@ -26,9 +26,15 @@ function createBook(
   publishedYear: number,
   genre: string
 ): Book {
+  const newBook: Book = {
+     title,
+     author,
+     publishedYear,
+     genre,
+  };
   // write your code here...
 
-  return {} as Book; // replace "{} as Book" with what you see is fit
+  return newBook; // replace "{} as Book" with what you see is fit
 }
 
 // DO NOT CHANGE THE LINE OF CODE BELOW (you can use it for testing your code)
@@ -49,9 +55,12 @@ const book = createBook(
  *   // => "Hitchhiker's Guide to The Galaxy 1965"
  */
 function printBookTitleAndYear(book: Book): string {
+  const title = book.title;
+  const publishedYear = book["publishedYear"];
+  const result = `${title} ${publishedYear}`;
   // write your code here...
 
-  return ""; // replace empty string with what you see is fit
+  return result; // replace empty string with what you see is fit
 }
 
 /**
@@ -65,6 +74,7 @@ function printBookTitleAndYear(book: Book): string {
  *   // => { title: "Hitchhiker's Guide to The Galaxy", author: "Douglas Adams", publishedYear: 1965, genre: "Sci-Fi", pageCount: 320 }
  */
 function addPageCount(book: Book, pageCount: number): Book {
+  book.pageCount = pageCount;
   // write your code here...
 
   return book;
@@ -87,6 +97,7 @@ function addPageCount(book: Book, pageCount: number): Book {
  *   //    }
  */
 function addISBN(book: Book, ISBN: string): Book {
+  book.ISBN = ISBN;
   // write your code here...
 
   return book;
@@ -110,7 +121,7 @@ function addISBN(book: Book, ISBN: string): Book {
  */
 function updatePublishedYear(book: Book, newYear: number): Book {
   // write your code here...
-
+book.publishedYear = newYear;
   return book;
 }
 
@@ -135,7 +146,13 @@ function updatePublishedYear(book: Book, newYear: number): Book {
  */
 function addSecondAuthor(book: Book, additionalAuthor: string): Book {
   // write your code here...
-
+  if (typeof book.author === "string") {
+    //
+    book.author = [book.author, additionalAuthor];
+  } else {
+  
+    book.author.push(additionalAuthor);
+  }
   return book;
 }
 
